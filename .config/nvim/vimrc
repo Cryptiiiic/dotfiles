@@ -1,0 +1,49 @@
+if &compatible
+  set nocompatible
+endif
+
+filetype    plugin indent on
+syntax      on
+colorscheme default
+
+set background=dark
+set number
+
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
+
+" open with the cursor in previous session
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
+
+"" File encodings
+set encoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,ascii
+set fileformats=unix,mac,dos
+
+"" Use mouse
+set mouse-=a
+
+"" Open a new buffer without saving
+set hidden
+
+"" Show vim title for a window
+set title
+
+set number
+set nuw=5
+
+"" Show command in status line
+set showcmd
+
+nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview('right')) <CR>
+nnoremap <silent> <C-x> :Commands <CR>
+
+vnoremap tr :<C-u> Tabularize /
+
+let g:indent_guides_enable_on_vim_startup = 1
