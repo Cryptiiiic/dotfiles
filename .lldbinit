@@ -1,0 +1,7 @@
+#command script import "/Users/cryptic/tools/python/llef/llef.py"
+settings set stop-disassembly-display never
+#settings set target.x86-disassembly-flavor intel
+command script import "/Users/cryptic/tools/python/LLDB/lldb_commands/dslldb.py"
+settings set target.require-hardware-breakpoint true
+platform select remote-ios
+#process connect connect://127.1:1337
